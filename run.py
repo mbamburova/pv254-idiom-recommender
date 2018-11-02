@@ -1,12 +1,6 @@
-from flask import Flask
+from src.app import create_app
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
+    env_name = 'production'
+    app = create_app(env_name)
     app.run()

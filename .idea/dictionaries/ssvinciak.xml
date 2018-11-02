@@ -2,6 +2,7 @@
   <dictionary name="ssvinciak">
     <words>
       <w>sqlalchemy</w>
+      <w>tablename</w>
     </words>
   </dictionary>
 </component>
