@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, Blueprint
 
 from .config import app_config
 from .models import db, ma
 
-from.views.QuestionView import question_api as question_blueprint
+#from .views.QuestionView import question_api as question_blueprint
 
 
 def create_app(env_name):
@@ -14,7 +14,7 @@ def create_app(env_name):
     db.init_app(app)
     ma.init_app(app)
 
-    app.register_blueprint(question_blueprint, url_prefix='/api/v1/questions')
+    app.register_blueprint.register_blueprint(Blueprint('questions', __name__), url_prefix='/api/v1/questions')
 
     @app.route('/', methods=['GET'])
     def index():
