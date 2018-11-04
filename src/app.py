@@ -14,7 +14,7 @@ def create_app(env_name):
     db.init_app(app)
     ma.init_app(app)
 
-    app.register_blueprint.register_blueprint(Blueprint('questions', __name__), url_prefix='/api/v1/questions')
+    app.register_blueprint(Blueprint('questions', __name__), url_prefix='/api/v1/questions')
 
     @app.route('/', methods=['GET'])
     def index():
