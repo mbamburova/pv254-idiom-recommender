@@ -1,0 +1,25 @@
+# TODO make test possible with test db
+language: python
+
+python:
+  - "3.7"
+
+service:
+  - postgresql
+
+before_install:
+#  - export APP_SETTINGS="src.config.TestingConfig"
+
+install:
+  - pip install -r requirements.txt
+#  - pip install coveralls
+
+before_script:
+#  - psql -c 'create database test;' -U postgres
+#  - python manage.py db upgrade
+
+script:
+#  - nosetests --with-coverage --cover-package=src
+
+after_script:
+#  - coveralls
