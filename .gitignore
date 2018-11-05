@@ -104,3 +104,24 @@ venv.bak/
 .mypy_cache/
 
 .idea
+
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# production
+build
+dist
+
+# misc
+frontend/DS_Store
+frontend/env
+npm-debug.log
+
+frontend/idea/*
+!frontend/idea/codeStyleSettings.xml
+!frontend/idea/codeStyles
+!frontend/idea/libraries
+!frontend/idea/inspectionProfiles

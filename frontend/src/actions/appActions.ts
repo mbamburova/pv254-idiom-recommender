@@ -29,4 +29,4 @@ export const correctAnswerLoaded = (answerId: string): Action => ({
   payload: {
     answerId,
   }
-})
+});

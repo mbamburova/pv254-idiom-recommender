@@ -1,8 +1,8 @@
 {
-  "name": "kentico-boilerplate",
-  "description": "A boilerplate code meant for PV247 course projects",
-  "repository": "https://github.com/KenticoAcademy/pv247-2018",
-  "version": "0.0.2",
+  "name": "Idioms' recommender system (PV254)",
+  "description": "A school project for PV254 course (Recommender systems)",
+  "repository": "https://github.com/mbamburova/pv254-idiom-recommender",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "src/index.jsx",
   "scripts": {

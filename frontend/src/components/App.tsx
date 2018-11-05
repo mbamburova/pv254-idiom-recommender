@@ -3,6 +3,7 @@ import {IUser} from '../models/User';
 import {Question} from '../containers/Question';
 import {ICurrentUserRepository} from '../repositories/interfaces/ICurrentUserRepository';
 import {IQuestionRepository} from '../repositories/interfaces/IQuestionRepository';
+import {AnswerList} from '../containers/AnswerList';
 
 export interface IAppStateProps {
   loaded: boolean;
@@ -34,7 +35,12 @@ export class AppComponent extends React.PureComponent<AppProps> {
           <div className="loader__bubble" />
         </div>);
     } else {
-        return (<Question/>);
+        return (
+          <div>
+            <Question/>
+            <AnswerList/>
+          </div>
+        );
     }
   }
 }

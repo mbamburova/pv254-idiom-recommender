@@ -15,6 +15,6 @@ export function getQuestionFromServerModel(serverModel: QuestionServerModel): IQ
     question: serverModel.question,
     id: serverModel.question_id,
     type: serverModel.question_type,
-    answers: List(serverModel.answers.map((answer: AnswerServerModel) => getAnswerFromServerModel(answer)))
+    answers: List(serverModel.answers.map((answer: AnswerServerModel) => getAnswerFromServerModel(answer))),
   };
 }
