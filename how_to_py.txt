@@ -1,0 +1,29 @@
+# pre-requirements
+- My setup
+python --version => Pyhton 3.7.1
+pip --version => pip 18.1
+virtualenv --version => 16.0.0
+
+# always use virtual environment
+- go to $PROJECT_FOLDER/
+run '$PROJECT_FOLDER/venv/Scripts/activate' => Command activate virtual environment
+run 'deactivate' to deactivate environment
+
+# installing packages 
+pip install -r requirements.txt
+
+# if you install new package, then add it to requirements
+pip freeze > requirements.txt
+
+*PyCharm uses virtual environment automatically in terminal window
+	
+HEROKU
+In order to deploy to heroku:
+- 'gunicorn' package, already in requirements.txt
+- heroku scans through code and figure out, which db it uses, but it has to configured in Procfile below
+- file 'Procfile'
+	* each line has format '<process type>: <command>'
+	* in our case 'web: gunicorn app:app'
+	* for more info: https://devcenter.heroku.com/articles/procfile
+	* add line for db config 'release: python migrate.py db upgrade' and heroku populates db automatically. If you don't want to use migrations, then please suggest other solution
+
