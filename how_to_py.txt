@@ -9,14 +9,14 @@ virtualenv --version => 16.0.0
 run '$PROJECT_FOLDER/venv/Scripts/activate' => Command activate virtual environment
 run 'deactivate' to deactivate environment
 
-# installing packages 
+# installing packages
 pip install -r requirements.txt
 
 # if you install new package, then add it to requirements
 pip freeze > requirements.txt
 
 *PyCharm uses virtual environment automatically in terminal window
-	
+
 HEROKU
 In order to deploy to heroku:
 - 'gunicorn' package, already in requirements.txt
@@ -27,3 +27,11 @@ In order to deploy to heroku:
 	* for more info: https://devcenter.heroku.com/articles/procfile
 	* add line for db config 'release: python migrate.py db upgrade' and heroku populates db automatically. If you don't want to use migrations, then please suggest other solution
 
+  POSTGRE DATABASE
+    * Install postgresql
+    * create user with password
+    * create database idiomrecommender
+    * create tables with collumns
+    * in config.py edit postgres_local_base to match your username and password
+    - I cannot give you step-by-step approach because I've done most of the things
+      through Windows GUI so it would differ on Linux anyway...

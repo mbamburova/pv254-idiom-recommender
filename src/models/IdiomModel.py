@@ -6,30 +6,40 @@ class IdiomModel(db.Model):
     __tablename__ = 'idioms'
 
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String, nullable=False)
-    explanation = db.Column(db.String)
-    examples = db.Column(db.JSON, nullable=True)
+    text = db.Column(db.String, nullable=False, unique=True)
+    definition = db.Column(db.String, nullable=False)
+    example = db.Column(db.String, nullable=False)
+    category = db.Column(db.String, nullable=False)
+    frequency = db.Column(db.Integer)
 
     def __init__(self, data):
         self.text = data.get('text')
-        self.explanation = data.get('explanation')
-        self.examples = data.get('examples')
+        self.definition = data.get('explanation')
+        self.example = data.get('example')
+        self.frequency = data.get('frequency')
+        self.category = data.get('category')
 
-    def save(self):
-        db.session.add(self)
+    def create_idiom(idiom):
+        db.session.add(idiom)
         db.session.commit()
 
-    @staticmethod
+    def delete_idiom(idiom):
+        db.session.add(idiom)
+        db.session.commit()
+
     def get_all():
-        return IdiomModel.query.all()
+        return db.session.query(IdiomModel).all()
 
-    @staticmethod
     def get_idiom_by_id(idiom_id):
-        return IdiomModel.query.get(idiom_id)
+        return db.session.query(IdiomModel).get(idiom_id)
+
+    def get_idiom_by_name(idiom_name):
+        return db.session.query(IdiomModel).filter_by(text=idiom_name).first()
 
 
-class QuestionSchema(Schema):
-    id = fields.Integer(required=True)
+class IdiomSchema(Schema):
     text = fields.String(required=True)
-    explanation = fields.String(required=True)
-    examples = fields.String()
+    definition = fields.String(required=True)
+    example = fields.String(required=True)
+    frequency = fields.Integer()
+    category = fields.String(required=True)
