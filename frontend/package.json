@@ -1,5 +1,5 @@
 {
-  "name": "Idioms' recommender system (PV254)",
+  "name": "IdiomRecommenderSystem",
   "description": "A school project for PV254 course (Recommender systems)",
   "repository": "https://github.com/mbamburova/pv254-idiom-recommender",
   "version": "0.0.1",
@@ -17,6 +17,7 @@
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",

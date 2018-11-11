@@ -36,7 +36,7 @@ export class AppComponent extends React.PureComponent<AppProps> {
         </div>);
     } else {
         return (
-          <div>
+          <div className="container text-center" style={{paddingTop: '5em'}}>
             <Question/>
             <AnswerList/>
           </div>

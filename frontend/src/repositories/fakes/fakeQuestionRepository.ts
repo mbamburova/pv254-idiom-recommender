@@ -10,7 +10,7 @@ export const fakeQuestionRepository: IQuestionRepository = {
         answers: [
           {
             answer_id: '546',
-            text: 'Need to choose from two difficult options',
+            text: 'Extremely annoying long text which is going to be displayed weirdly. Need to choose from two difficult options. Extremely annoying long text which is going to be displayed weirdly. Need to choose from two difficult options',
           },
           {
             answer_id: '341',

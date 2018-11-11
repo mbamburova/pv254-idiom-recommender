@@ -15,7 +15,7 @@ export interface IAnswerListStateProps {
 }
 
 export interface IAnswerListCallbackProps {
-  onAnswerSelect: (questionRepository: IQuestionRepository, user: IUser, questionId: string, answerId: string) => Promise<void>;
+  onAnswerSelect: ((questionRepository: IQuestionRepository, user: IUser, questionId: string, answerId: string) => Promise<void> );
 }
 
 export type AnswerListProps = IAnswerListStateProps & IAnswerListCallbackProps;
@@ -26,14 +26,15 @@ export class AnswerListComponent extends React.PureComponent<AnswerListProps> {
   render() {
     const { questionRepository, currentUser, answers, questionId, selectedAnswerId, correctAnswerId, onAnswerSelect } = this.props;
     return (
-      <table>
+      <table style={{margin: '0 auto', borderCollapse: 'separate', borderSpacing: '1em'}}>
         <tbody>
         {
           answers.map((answer: IAnswer) => {
             const callback = () => onAnswerSelect(questionRepository, currentUser, questionId, answer.id);
             const isCorrect = !!correctAnswerId && correctAnswerId === answer.id;
             const isSelected = !!selectedAnswerId && selectedAnswerId === answer.id;
-            return <Answer key={answer.id} text={answer.text} isSelected={isSelected} isCorrect={isCorrect} onAnswerSelect={callback}/>;
+            const disabled = selectedAnswerId !== null;
+            return <Answer key={answer.id} text={answer.text} isSelected={isSelected} isCorrect={isCorrect} disabled={disabled} onAnswerSelect={callback}/>;
           })
         }
         </tbody>
