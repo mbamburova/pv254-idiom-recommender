@@ -19,23 +19,6 @@ class IdiomModel(db.Model):
         self.frequency = data.get('frequency')
         self.category = data.get('category')
 
-    def create_idiom(idiom):
-        db.session.add(idiom)
-        db.session.commit()
-
-    def delete_idiom(idiom):
-        db.session.add(idiom)
-        db.session.commit()
-
-    def get_all():
-        return db.session.query(IdiomModel).all()
-
-    def get_idiom_by_id(idiom_id):
-        return db.session.query(IdiomModel).get(idiom_id)
-
-    def get_idiom_by_name(idiom_name):
-        return db.session.query(IdiomModel).filter_by(text=idiom_name).first()
-
 
 class IdiomSchema(Schema):
     text = fields.String(required=True)
