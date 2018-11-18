@@ -21,6 +21,7 @@ class IdiomModel(db.Model):
 
 
 class IdiomSchema(Schema):
+    id = fields.Integer(required=True)
     text = fields.String(required=True)
     definition = fields.String(required=True)
     example = fields.String(required=True)
