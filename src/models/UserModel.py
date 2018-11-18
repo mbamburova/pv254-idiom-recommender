@@ -15,3 +15,4 @@ class UserModel(db.Model):
 
 class UserSchema(Schema):
     id = fields.Integer(required=True)
+    version = fields.Integer(required=True)
