@@ -4,5 +4,5 @@ import random
 
 
 def generate_question():
-    return IdiomModel.query.filter(random.sample(range(1, 1041), 1))
+    return IdiomModel.query.get(random.sample(range(1, 1041), 1))
 
