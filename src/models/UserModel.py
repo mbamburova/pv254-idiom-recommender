@@ -9,7 +9,6 @@ class UserModel(db.Model):
     version = db.Column(db.Integer, nullable=False)
 
     def __init__(self, data):
-        self.id = data.get('id')
         self.version = data.get('version')
 
 
