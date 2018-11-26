@@ -26,21 +26,21 @@ def get_new_question(user_id):
             HTTPStatus.OK
         )
 
-    elif user.version == RecommenderVersion.NR.value:
+    elif user.version == RecommenderVersion.TR.value:
         trained_question = TrainedQuestionGenerator.generate_question()
         return custom_response(
             RandomAnswersGenerator.generate_answers(trained_question),
             HTTPStatus.OK
         )
 
-    elif user.version == RecommenderVersion.RN.value:
+    elif user.version == RecommenderVersion.RT.value:
         random_question = RandomQuestionGenerator.generate_question()
         return custom_response(
             TrainedAnswersGenerator.generate_answers(random_question),
             HTTPStatus.OK
         )
 
-    elif user.version == RecommenderVersion.NN.value:
+    elif user.version == RecommenderVersion.TT.value:
         trained_question = TrainedQuestionGenerator.generate_question()
         return custom_response(
             TrainedAnswersGenerator.generate_answers(trained_question),

@@ -3,12 +3,12 @@ import enum
 
 # Version | Question  | Answers
 # 1       | random    | random
-# 2       | nerandom  | random
-# 3       | random    | nerandom
-# 4       | nerandom  | nerandom
+# 2       | trained   | random
+# 3       | random    | trained
+# 4       | trained   | trained
 
 class RecommenderVersion(enum.Enum):
     RR = 1
-    NR = 2
-    RN = 3
-    NN = 4
+    TR = 2
+    RT = 3
+    TT = 4
