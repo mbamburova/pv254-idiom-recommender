@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from flask import json, Response, Blueprint
 from src.services import UserAnswerService
 
@@ -11,12 +13,12 @@ def get_answer_by_id(user_id, question_id, answer_id):
     if UserAnswerService.already_answered(question_id) is not None:
         return custom_response(
             {"error": "Bad request - question is already answered"},
-            400
+            HTTPStatus.BAD_REQUEST
         )
 
     return custom_response(
         UserAnswerService.save_answer(user_id, question_id, answer_id),
-        200
+        HTTPStatus.OK
     )
 
 

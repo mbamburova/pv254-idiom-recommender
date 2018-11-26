@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from flask import json, Response, Blueprint
 
 from src.models.RecommenderVersion import RecommenderVersion
@@ -21,28 +23,28 @@ def get_new_question(user_id):
         random_question = RandomQuestionGenerator.generate_question()
         return custom_response(
             RandomAnswersGenerator.generate_answers(random_question),
-            200
+            HTTPStatus.OK
         )
 
     elif user.version == RecommenderVersion.NR.value:
         trained_question = TrainedQuestionGenerator.generate_question()
         return custom_response(
             RandomAnswersGenerator.generate_answers(trained_question),
-            200
+            HTTPStatus.OK
         )
 
     elif user.version == RecommenderVersion.RN.value:
         random_question = RandomQuestionGenerator.generate_question()
         return custom_response(
             TrainedAnswersGenerator.generate_answers(random_question),
-            200
+            HTTPStatus.OK
         )
 
     elif user.version == RecommenderVersion.NN.value:
         trained_question = TrainedQuestionGenerator.generate_question()
         return custom_response(
             TrainedAnswersGenerator.generate_answers(trained_question),
-            200
+            HTTPStatus.OK
         )
     else:
         custom_response({"error": "unsupported operation exception"}, 400)

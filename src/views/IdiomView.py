@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from flask import json, Response, Blueprint
 
 from ..models.IdiomModel import IdiomModel, IdiomSchema
@@ -14,21 +16,21 @@ idiom_schema = IdiomSchema()
 def get_all_idioms():
     idioms = IdiomModel.query.all()
     response = idioms_schema.dump(idioms)
-    return custom_response(response, 200)
+    return custom_response(response, HTTPStatus.OK)
 
 
 @idioms_blueprint.route('/<int:idiom_id>', methods=['GET'])
 def get_idiom_by_id(idiom_id):
     idiom = IdiomModel.query.get(idiom_id)
     response = idiom_schema.dump(idiom)
-    return custom_response(response, 200)
+    return custom_response(response, HTTPStatus.OK)
 
 
 @idioms_blueprint.route('/find/<idiom_name>', methods=['GET'])
 def get_idiom_by_name(idiom_name):
     idiom = IdiomModel.query.filter_by(text=idiom_name).first()
     response = idiom_schema.dump(idiom)
-    return custom_response(response, 200)
+    return custom_response(response, HTTPStatus.OK)
 
 
 def custom_response(res, status_code):
