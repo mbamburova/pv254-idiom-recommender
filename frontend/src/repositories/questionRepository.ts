@@ -15,7 +15,7 @@ export const questionRepository: IQuestionRepository = {
       });
   },
   answerQuestion: (currentUser: CurrentUserServerModel, questionId: number, answerId: number): Promise<CorrectnessServerModel> => {
-    return fetch(`${SERVER_BASE_URL}/answer/${currentUser.id}/${questionId}/${answerId}'`)
+    return fetch(`${SERVER_BASE_URL}/answer/${currentUser.id}/${questionId}/${answerId}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(response.statusText);

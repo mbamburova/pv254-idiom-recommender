@@ -32,7 +32,8 @@ export class AnswerListComponent extends React.PureComponent<AnswerListProps> {
           answers.map((answer: IAnswer) => {
             const callback = () => onAnswerSelect(questionRepository, currentUser, questionId, answer.id);
             const isCorrect = !!correctAnswerId && correctAnswerId === answer.id;
-            const isSelected = !!selectedAnswerId && selectedAnswerId === answer.id;
+            // don't be incorrect until correctness is not loaded
+            const isSelected = !!correctAnswerId && !!selectedAnswerId && selectedAnswerId === answer.id;
             const disabled = selectedAnswerId !== null;
             return <Answer key={answer.id} text={answer.text} isSelected={isSelected} isCorrect={isCorrect} disabled={disabled} onAnswerSelect={callback}/>;
           })
