@@ -4,6 +4,6 @@ import {IQuestionRepository} from '../../repositories/interfaces/IQuestionReposi
 export interface IQuestionStoreState {
   readonly questionRepository: IQuestionRepository;
   readonly currentQuestion: IQuestion | null;
-  readonly correctAnswerId: string | null;
-  readonly selectedAnswerId: string | null;
+  readonly correctAnswerId: number | null;
+  readonly selectedAnswerId: number | null;
 }

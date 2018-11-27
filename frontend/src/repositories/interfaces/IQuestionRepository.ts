@@ -4,5 +4,5 @@ import {CorrectnessServerModel} from '../serverModels/CorrectnessServerModel';
 
 export interface IQuestionRepository {
   getQuestion: (currentUser: CurrentUserServerModel) => Promise<QuestionServerModel>;
-  answerQuestion: (questionId: string, answerId: string) => Promise<CorrectnessServerModel>;
+  answerQuestion: (currentUser: CurrentUserServerModel, questionId: number, answerId: number) => Promise<CorrectnessServerModel>;
 }

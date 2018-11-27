@@ -8,14 +8,14 @@ import {IUser} from '../models/User';
 export interface IAnswerListStateProps {
   questionRepository: IQuestionRepository;
   answers: List<IAnswer>;
-  questionId: string;
-  selectedAnswerId: string | null;
-  correctAnswerId: string | null;
+  questionId: number;
+  selectedAnswerId: number | null;
+  correctAnswerId: number | null;
   currentUser: IUser;
 }
 
 export interface IAnswerListCallbackProps {
-  onAnswerSelect: ((questionRepository: IQuestionRepository, user: IUser, questionId: string, answerId: string) => Promise<void> );
+  onAnswerSelect: ((questionRepository: IQuestionRepository, user: IUser, questionId: number, answerId: number) => Promise<void> );
 }
 
 export type AnswerListProps = IAnswerListStateProps & IAnswerListCallbackProps;

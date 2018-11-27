@@ -1,12 +1,12 @@
 import {IQuestionStoreState} from './IQuestionStoreState';
 import {combineReducers} from 'redux';
 import {currentQuestion} from './currentQuestion';
-import {fakeQuestionRepository} from '../../repositories/fakes/fakeQuestionRepository';
 import {selectedAnswerId} from './selectedAnswerId';
 import {correctAnswerId} from './correctAnswerId';
+import {questionRepository} from '../../repositories/questionRepository';
 
 export const questionReducer = combineReducers<IQuestionStoreState>({
-  questionRepository: () => fakeQuestionRepository,
+  questionRepository: () => questionRepository,
   currentQuestion,
   correctAnswerId,
   selectedAnswerId,

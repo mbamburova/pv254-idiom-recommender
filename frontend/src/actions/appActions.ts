@@ -17,14 +17,14 @@ export const questionGenerated = (question: IQuestion): Action => ({
   }
 });
 
-export const answerSelected = (answerId: string): Action => ({
+export const answerSelected = (answerId: number): Action => ({
   type: Question_Answer_Selected,
   payload: {
     answerId,
   }
 });
 
-export const correctAnswerLoaded = (answerId: string): Action => ({
+export const correctAnswerLoaded = (answerId: number): Action => ({
   type: Question_Correct_Answer_Loaded,
   payload: {
     answerId,

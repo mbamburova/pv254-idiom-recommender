@@ -1,4 +1,4 @@
 export interface AnswerServerModel {
-  readonly answer_id: string;
-  readonly text: string;
+  readonly answer_id: number;
+  readonly answer_text: string;
 }

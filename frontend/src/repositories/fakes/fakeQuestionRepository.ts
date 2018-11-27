@@ -6,29 +6,27 @@ export const fakeQuestionRepository: IQuestionRepository = {
   getQuestion: (): Promise<QuestionServerModel> => {
     return Promise.resolve({
         question: 'Piece of cake',
-        question_id: '134',
+        question_id: 134,
         answers: [
           {
-            answer_id: '546',
-            text: 'Extremely annoying long text which is going to be displayed weirdly. Need to choose from two difficult options. Extremely annoying long text which is going to be displayed weirdly. Need to choose from two difficult options',
+            answer_id: 546,
+            answer_text: 'Extremely annoying long text which is going to be displayed weirdly. Need to choose from two difficult options. Extremely annoying long text which is going to be displayed weirdly. Need to choose from two difficult options',
           },
           {
-            answer_id: '341',
-            text: 'An easy task',
+            answer_id: 341,
+            answer_text: 'An easy task',
           },
           {
-            answer_id: '643',
-            text: 'Very good food',
+            answer_id: 643,
+            answer_text: 'Very good food',
           }
         ],
-        question_type: 5,
       }
     );
   },
   answerQuestion: (): Promise<CorrectnessServerModel> => {
     return Promise.resolve({
-        correct: true,
-        correct_answer_id: '341',
+        correct_answer_id: 341,
       }
     );
   }
