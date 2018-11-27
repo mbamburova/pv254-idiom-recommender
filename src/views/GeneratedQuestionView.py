@@ -50,6 +50,11 @@ def get_new_question(user_id):
     else:
         custom_response({"error": "unsupported operation exception"}, 400)
 
+@generated_questions_blueprint.after_request
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
 
 def custom_response(res, status_code):
     return Response(

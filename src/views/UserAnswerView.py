@@ -19,6 +19,11 @@ def get_answer_by_id(user_id, question_id, answer_id):
         200
     )
 
+@user_answers_blueprint.after_request
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
 
 def custom_response(res, status_code):
     return Response(

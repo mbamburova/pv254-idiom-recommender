@@ -31,6 +31,12 @@ def get_new_user():
     response = user_schema.dump(user)
     return custom_response(response, 200)
 
+@users_blueprint.after_request
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
+
 
 def custom_response(res, status_code):
     return Response(
