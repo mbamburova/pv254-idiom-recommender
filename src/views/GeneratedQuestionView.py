@@ -1,18 +1,17 @@
+from http import HTTPStatus
+
 from flask import json, Response, Blueprint
+
+from src.models.RecommenderVersion import RecommenderVersion
 from src.models.UserModel import UserModel
+from src.services import RandomQuestionGenerator, TrainedQuestionGenerator, RandomAnswersGenerator, \
+    TrainedAnswersGenerator
 from ..models.GeneratedQuestionModel import GeneratedQuestionSchema
-from src.services import RandomQuestionGenerator, TrainedQuestionGenerator, RandomAnswersGenerator, TrainedAnswersGenerator
 
 # CONFIG
 generated_questions_blueprint = Blueprint('question', __name__, url_prefix='/api/v1/question')
 
 generated_questions_schema = GeneratedQuestionSchema(many=True)
-
-# Version | Question  | Answers
-# 1       | random    | random
-# 2       | nerandom  | random
-# 3       | random    | nerandom
-# 4       | nerandom  | nerandom
 
 
 # ROUTES
@@ -20,32 +19,32 @@ generated_questions_schema = GeneratedQuestionSchema(many=True)
 def get_new_question(user_id):
     user = UserModel.query.get(user_id)
 
-    if user.version == 1:
+    if user.version == RecommenderVersion.RR.value:
         random_question = RandomQuestionGenerator.generate_question()
         return custom_response(
             RandomAnswersGenerator.generate_answers(random_question),
-            200
+            HTTPStatus.OK
         )
 
-    elif user.version == 2:
+    elif user.version == RecommenderVersion.TR.value:
         trained_question = TrainedQuestionGenerator.generate_question()
         return custom_response(
             RandomAnswersGenerator.generate_answers(trained_question),
-            200
+            HTTPStatus.OK
         )
 
-    elif user.version == 3:
+    elif user.version == RecommenderVersion.RT.value:
         random_question = RandomQuestionGenerator.generate_question()
         return custom_response(
             TrainedAnswersGenerator.generate_answers(random_question),
-            200
+            HTTPStatus.OK
         )
 
-    elif user.version == 4:
+    elif user.version == RecommenderVersion.TT.value:
         trained_question = TrainedQuestionGenerator.generate_question()
         return custom_response(
             TrainedAnswersGenerator.generate_answers(trained_question),
-            200
+            HTTPStatus.OK
         )
     else:
         custom_response({"error": "unsupported operation exception"}, 400)

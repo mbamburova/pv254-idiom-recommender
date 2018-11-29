@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from flask import json, Response, Blueprint
 
 from src.models import db
@@ -15,7 +17,7 @@ user_schema = UserSchema()
 def get_all_users():
     users = UserModel.query.all()
     response = users_schema.dump(users)
-    return custom_response(response, 200)
+    return custom_response(response, HTTPStatus.OK)
 
 
 @users_blueprint.route('/new-user', methods=['GET'])
@@ -29,7 +31,7 @@ def get_new_user():
     db.session.refresh(user)
 
     response = user_schema.dump(user)
-    return custom_response(response, 200)
+    return custom_response(response, HTTPStatus.OK)
 
 @users_blueprint.after_request
 def after_request(response):
