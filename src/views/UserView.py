@@ -2,8 +2,8 @@ from http import HTTPStatus
 
 from flask import json, Response, Blueprint
 
-from src.models import db
-from src.models.RecommenderVersion import RecommenderVersion
+from src.models.RecommenderVersion import RecommenderVersion as Version
+from src.models.UserAnswerModel import db
 from ..models.UserModel import UserModel, UserSchema
 
 # CONFIG
@@ -33,6 +33,7 @@ def get_new_user():
     response = user_schema.dump(user)
     return custom_response(response, HTTPStatus.OK)
 
+
 @users_blueprint.after_request
 def after_request(response):
     header = response.headers
@@ -48,6 +49,16 @@ def custom_response(res, status_code):
     )
 
 
+first_random = 10
+replicated_versions = [Version.RR.value] * first_random + [Version.RT.value] * first_random + \
+                      [Version.TR.value] * first_random + [Version.TT.value] * first_random
+versions = [v.value for v in Version]
+limit = 4 * first_random
+
+
 def choose_recommender_version():
-    # TODO: add logic for choosing rec version
-    return RecommenderVersion.RR.value
+    rows = db.session.query(UserModel).count()
+    if rows < limit:
+        return replicated_versions[rows]
+    else:
+        return versions[rows % 4]
