@@ -12,6 +12,17 @@ export type IntroDispatchProps = {
 
 export type IntroductionProps = IntroDispatchProps & IntroStateProps;
 
+const indentation = {
+  margin: '0 0 0 10px',
+};
+
+const marginDown = {
+  margin: '0 0 10px 0'
+};
+
+const buttonStyle = {
+  margin: '0 10px 0 0'
+};
 
 export class IntroductionComponent extends React.PureComponent<IntroductionProps> {
   _closeHandling = () => {
@@ -23,11 +34,11 @@ export class IntroductionComponent extends React.PureComponent<IntroductionProps
       <div>
         <Modal show={this.props.show} onHide={this.props.onClose}>
           <Modal.Header>
-            <Modal.Title>Introduction</Modal.Title>
+            <Modal.Title style={indentation}>Introduction</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={indentation}>
             <h4>What is waiting for you</h4>
-            <p>
+            <p style={marginDown}>
               We have prepared questions for you. Each question contains an idiom and
               3 possible explanations. Your task is to choose the correct one.
               There is only one correct answer.
@@ -40,14 +51,14 @@ export class IntroductionComponent extends React.PureComponent<IntroductionProps
 
             <h4>Last thing</h4>
             <p>
-              In the end, there is a link to a short survey. We would be very happy if you fill it.
+              In the end, there is a link to a short <strong>survey</strong>. We would be very happy if you fill it.
             </p>
 
-            <h4>Many thanks!</h4>
+            <h3>Many thanks!</h3>
 
           </Modal.Body>
           <Modal.Footer>
-            <Button className="btn-info btn-lg" onClick={this._closeHandling}>Got it</Button>
+            <Button style={buttonStyle} className="btn-info btn-lg" onClick={this._closeHandling}>Got it</Button>
           </Modal.Footer>
         </Modal>
       </div>
