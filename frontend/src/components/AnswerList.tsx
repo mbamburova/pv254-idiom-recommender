@@ -15,7 +15,7 @@ export interface IAnswerListStateProps {
 }
 
 export interface IAnswerListCallbackProps {
-  onAnswerSelect: ((questionRepository: IQuestionRepository, user: IUser, questionId: number, answerId: number) => Promise<void> );
+  onAnswerSelect: ((questionRepository: IQuestionRepository, user: IUser, questionId: number, answerId: number) => Promise<void>);
 }
 
 export type AnswerListProps = IAnswerListStateProps & IAnswerListCallbackProps;
@@ -24,7 +24,9 @@ export class AnswerListComponent extends React.PureComponent<AnswerListProps> {
   static displayName = 'AnswerList';
 
   render() {
-    const { questionRepository, currentUser, answers, questionId, selectedAnswerId, correctAnswerId, onAnswerSelect } = this.props;
+    const {
+      questionRepository, currentUser, answers, questionId, selectedAnswerId, correctAnswerId, onAnswerSelect
+    } = this.props;
     return (
       <table style={{margin: '0 auto', borderCollapse: 'separate', borderSpacing: '1em'}}>
         <tbody>

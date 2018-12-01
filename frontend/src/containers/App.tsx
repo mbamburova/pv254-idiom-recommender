@@ -10,6 +10,7 @@ import {createGenerateQuestionAction} from '../actions/thunks/generateQuestion';
 const mapStateToProps = (state: IStore): IAppStateProps => {
   return {
     loaded: state.questionStore.currentQuestion !== null,
+    hasUserPassedIntroduction: state.userStore.hasUserPassedIntroduction,
     currentUser: state.userStore.currentUser,
     userRepository: state.userStore.userRepository,
     questionRepository: state.questionStore.questionRepository,

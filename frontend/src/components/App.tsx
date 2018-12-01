@@ -4,9 +4,11 @@ import {Question} from '../containers/Question';
 import {ICurrentUserRepository} from '../repositories/interfaces/ICurrentUserRepository';
 import {IQuestionRepository} from '../repositories/interfaces/IQuestionRepository';
 import {AnswerList} from '../containers/AnswerList';
+import {Introduction} from '../containers/Introduction';
 
 export interface IAppStateProps {
   loaded: boolean;
+  hasUserPassedIntroduction: boolean;
   currentUser: IUser | null;
   userRepository: ICurrentUserRepository;
   questionRepository: IQuestionRepository;
@@ -26,7 +28,8 @@ export class AppComponent extends React.PureComponent<AppProps> {
     if (!this.props.loaded) {
       if (this.props.currentUser == null) {
         this.props.initUser(this.props.userRepository);
-      } else {
+      }
+      else {
         this.props.generateQuestion(this.props.questionRepository, this.props.currentUser);
       }
 
@@ -34,13 +37,13 @@ export class AppComponent extends React.PureComponent<AppProps> {
         <div className="loader">
           <div className="loader__bubble" />
         </div>);
-    } else {
-        return (
-          <div className="container text-center" style={{paddingTop: '5em'}}>
-            <Question/>
-            <AnswerList/>
-          </div>
-        );
     }
+    return (
+      <div className="container text-center" style={{paddingTop: '5em'}}>
+        <Introduction/>
+        <Question/>
+        <AnswerList/>
+      </div>
+    );
   }
 }

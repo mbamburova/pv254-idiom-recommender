@@ -113,5 +113,12 @@
     "space-unary-ops": "off",
     "spaced-comment": "warn",
     "object-curly-spacing": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
