@@ -26,11 +26,6 @@ for i in range(len(matrix)):
             matrix[i][j] = 0.0
             matrix[j][i] = 0.0
 
-for i in range(len(matrix)):
-    matrix[i][i] = 0.0
-
-pickle.dump(matrix, open("final_matrix.pkl", "wb"))
-
 counts = [(counter, len([x for x in vec if x > 0]) - 1) for counter, vec in enumerate(matrix)]
 counts.sort(key=lambda x: x[1])
 raw_counts = [x[1] for x in counts]
