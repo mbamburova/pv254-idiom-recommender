@@ -39,19 +39,20 @@ export class IntroductionComponent extends React.PureComponent<IntroductionProps
           <Modal.Body style={indentation}>
             <h4>What is waiting for you</h4>
             <p style={marginDown}>
-              We have prepared questions for you. Each question contains an idiom and
-              3 possible explanations. Your task is to choose the correct one.
-              There is only one correct answer.
+              We have prepared a few questions for you.
+              Each question contains an idiomatic expression together with 3 possible meanings.
+              Your task is to choose the correct one. There is only one correct answer.
             </p>
 
-            <h4>Take as much time as you need</h4>
+            <h4>Take as much time as you need, but it would help us if you answered at least 10 questions.</h4>
             <p>
               When you are done, please click on finish button.
             </p>
 
-            <h4>Last thing</h4>
+            <h4>Last but not least</h4>
             <p>
-              In the end, there is a link to a short <strong>survey</strong>. We would be very happy if you fill it.
+              At the end of this quiz, there is a link to a short <strong>survey</strong>.
+              We would be very happy if you fill it.
             </p>
 
             <h3>Many thanks!</h3>

@@ -5,6 +5,7 @@ import {ICurrentUserRepository} from '../repositories/interfaces/ICurrentUserRep
 import {IQuestionRepository} from '../repositories/interfaces/IQuestionRepository';
 import {AnswerList} from '../containers/AnswerList';
 import {Introduction} from '../containers/Introduction';
+import {FinishButton} from './FinishButton';
 
 export interface IAppStateProps {
   loaded: boolean;
@@ -25,7 +26,7 @@ export class AppComponent extends React.PureComponent<AppProps> {
   static displayName = 'IdiomApp';
 
   render() {
-    if (!this.props.loaded) {
+    if (!this.props.loaded || this.props.currentUser == null) {
       if (this.props.currentUser == null) {
         this.props.initUser(this.props.userRepository);
       }
@@ -43,6 +44,7 @@ export class AppComponent extends React.PureComponent<AppProps> {
         <Introduction/>
         <Question/>
         <AnswerList/>
+        <FinishButton version={this.props.currentUser.version}/>
       </div>
     );
   }
