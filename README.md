@@ -3,4 +3,4 @@
 
 Group project for PV254 course at FI MUNI
 
-Application is available [here](https://pv254-idiom-recommender.herokuapp.com/).
+Application is available [here](http://pv254-idioms.surge.sh/).
