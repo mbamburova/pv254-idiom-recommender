@@ -41,11 +41,17 @@ def generate_question_based_on_success_rate(answered_questions):
     last_answered_question = answered_questions[0]
     position = get_position_of_last_question(sorted_idioms, last_answered_question)
 
-    if success_rate(answered_questions) >= 0.8:
+    rate = success_rate(answered_questions)
+    if rate > 0.9:
+        return sorted_idioms[get_new_question_position(position + 61)]
+    elif rate > 0.8:
         return sorted_idioms[get_new_question_position(position + 21)]
-
-    else:
+    elif rate > 0.6:
         return sorted_idioms[get_new_question_position(position - 21)]
+    elif rate > 0.4:
+        return sorted_idioms[get_new_question_position(position - 31)]
+    else:
+        return sorted_idioms[get_new_question_position(position - 61)]
 
 
 def success_rate(answered_questions):
