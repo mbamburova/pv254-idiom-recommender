@@ -4,4 +4,5 @@ import {ICurrentUserRepository} from '../../repositories/interfaces/ICurrentUser
 export interface IUserStoreState {
   readonly userRepository: ICurrentUserRepository;
   readonly currentUser: IUser | null;
+  hasUserPassedIntroduction: boolean;
 }

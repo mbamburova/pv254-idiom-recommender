@@ -15,16 +15,23 @@ export class Answer extends React.PureComponent<AnswerProps> {
     let className;
     if (this.props.isCorrect) {
       className = 'btn-success';
-    } else if (this.props.isSelected) {
+    }
+    else if (this.props.isSelected) {
       className = 'btn-danger';
-    } else {
+    }
+    else {
       className = 'btn-secondary';
     }
     return (
       <tr>
         <td>
-          <button type="button" className={`btn ${className} btn-lg btn-block`} style={{cursor: 'auto', whiteSpace: 'normal'}}
-                  disabled={this.props.disabled} onClick={this.props.onAnswerSelect}>
+          <button
+            type="button"
+            className={`btn ${className} btn-lg btn-block`}
+            style={{cursor: 'auto', whiteSpace: 'normal' }}
+            disabled={this.props.disabled}
+            onClick={this.props.onAnswerSelect}
+          >
             {this.props.text}
           </button>
         </td>
