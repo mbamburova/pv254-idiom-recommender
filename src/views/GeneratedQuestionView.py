@@ -27,7 +27,7 @@ def get_new_question(user_id):
         )
 
     elif user.version == RecommenderVersion.TR.value:
-        trained_question = TrainedQuestionGenerator.generate_question()
+        trained_question = TrainedQuestionGenerator.generate_question(user_id)
         return custom_response(
             RandomAnswersGenerator.generate_answers(trained_question),
             HTTPStatus.OK
@@ -41,7 +41,7 @@ def get_new_question(user_id):
         )
 
     elif user.version == RecommenderVersion.TT.value:
-        trained_question = TrainedQuestionGenerator.generate_question()
+        trained_question = TrainedQuestionGenerator.generate_question(user_id)
         return custom_response(
             TrainedAnswersGenerator.generate_answers(trained_question),
             HTTPStatus.OK
