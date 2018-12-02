@@ -1,0 +1,7 @@
+Dataset is available at http://www.cs.jhu.edu/~mdredze/datasets/sentiment/  [unprocessed.tar.gz]
+
+- clean data from redundant processed files and retain only files with name 'all.reviews'
+- add 'idioms.txt' file to directory with data
+- run 'counts_collector.sh' script in directory
+- you can add '| tee output.log' to save results in file
+- profit
