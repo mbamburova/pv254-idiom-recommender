@@ -13,7 +13,7 @@ MODEL_WEIGHT = 1000.0
 SIMILARITY_UPPER_BOUND = 0.35585
 MY_PATH = os.path.dirname(os.path.abspath(__file__))
 
-matrix_path = os.path.join(MY_PATH, 'matrix.pkl')
+matrix_path = os.path.join(MY_PATH, 'final_matrix.pkl')
 sim_matrix = pickle.load(open(matrix_path, 'rb'))
 
 def generate_answers(idiom):

@@ -6,6 +6,7 @@ import numpy as np
 # This script was used as a playground, to find threshold of too similar answers, we don't want to include in our answers generator
 
 matrix = pickle.load(open('matrix.pkl', "rb")).tolist()
+pickle.dump(matrix, open('final_matrix.pkl', "wb"))
 with open('idioms.json') as f:
     data = json.load(f)
 
