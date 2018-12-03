@@ -26,7 +26,7 @@ export const FinishButton = (props: FinishButtonType) => {
   return (
     <a href={link} >
       <button type="button" className={`btn btn-lg btn-danger`} style={finishStyle}>
-        I'm done
+        Finish
       </button>
     </a>
   );
