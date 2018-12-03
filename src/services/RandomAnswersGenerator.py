@@ -35,11 +35,18 @@ def get_answer_list(idiom, random_idioms):
 
 
 def get_random_ids(idiom_id):
-    idioms_count = db.session.query(IdiomModel).count()
+    idioms = IdiomModel.query.all()
+    idiom_ids = []
+    for idiom in idioms:
+        idiom_ids.append(idiom.id)
 
-    samples = random.sample(range(1, idioms_count), 2)
+    random.shuffle(idiom_ids)
+    rand_positions = random.sample(range(0, len(idioms) - 1), 2)
+
+    samples = [idiom_ids[rand_positions[0]], idiom_ids[rand_positions[1]]]
     while idiom_id in samples:
-        samples = random.sample(range(1, idioms_count), 2)
+        rand_positions = random.sample(range(0, len(idioms) - 1), 2)
+        samples = [idiom_ids[rand_positions[0]], idiom_ids[rand_positions[1]]]
 
     return samples
 

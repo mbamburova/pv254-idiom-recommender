@@ -86,7 +86,7 @@ def get_new_question_position(new_position, idioms_count):
 
     if min_range > idioms_count or max_range > idioms_count:
         min_range = median_from_questions()
-        max_range = idioms_count
+        max_range = idioms_count - 1
 
     return random.randint(min_range, max_range)
 
