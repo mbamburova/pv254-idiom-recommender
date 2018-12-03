@@ -8,6 +8,7 @@ from src.models.IdiomModel import IdiomModel
 from src.models import db
 from src.models.GeneratedQuestionModel import GeneratedQuestionModel
 from src.models.UserAnswerModel import UserAnswerModel
+from src.services import RandomAnswersGenerator
 
 MODEL_WEIGHT = 1000.0
 SIMILARITY_UPPER_BOUND = 0.35585
@@ -31,13 +32,20 @@ def generate_answers(idiom):
 
         summed_weights_idioms[i] = w1 + w2 + w3
 
-    generated_answer_id1 =  max(summed_weights_idioms, key=summed_weights_idioms.get)
-    summed_weights_idioms.pop(generated_answer_id1)
-    generated_answer_id2 = max(summed_weights_idioms, key=summed_weights_idioms.get)
+    generated_answer_ids = []
+    while(len(all_idioms) > 0 and len(generated_answer_ids) < 2):
+        generated_answer_id = max(summed_weights_idioms, key=summed_weights_idioms.get)
+        summed_weights_idioms.pop(generated_answer_id)
+        if generated_answer_id != idiom.id:
+            generated_answer_ids.append(generated_answer_id)
+
+    # Extremely rare case, not sure if gonna ever happen:
+    if len(generated_answer_ids) != 2:
+        return RandomAnswersGenerator.generate_answers(idiom)
 
     random_idioms = IdiomModel.query.filter(or_(
-        IdiomModel.id == generated_answer_id1,
-        IdiomModel.id == generated_answer_id2
+        IdiomModel.id == generated_answer_ids[0],
+        IdiomModel.id == generated_answer_ids[1]
     ))
 
     question_id = save_question_model(idiom.id, random_idioms)
