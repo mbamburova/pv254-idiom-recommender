@@ -1,6 +1,7 @@
 import datetime
 import random
 
+from random import shuffle
 from sqlalchemy.sql.elements import or_
 from datetime import datetime
 from src.models import db
@@ -29,13 +30,16 @@ def get_answer_list(idiom, random_idioms):
     for _idiom in random_idioms:
         answer_list.append({"answer_text": _idiom.definition, "answer_id": _idiom.id})
 
+    shuffle(answer_list)
     return answer_list
 
 
 def get_random_ids(idiom_id):
-    samples = random.sample(range(1, 1041), 2)
+    idioms_count = db.session.query(IdiomModel).count()
+
+    samples = random.sample(range(1, idioms_count), 2)
     while idiom_id in samples:
-        samples = random.sample(range(1, 1041), 2)
+        samples = random.sample(range(1, idioms_count), 2)
 
     return samples
 

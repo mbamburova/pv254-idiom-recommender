@@ -20,13 +20,11 @@ def get_sorted_idioms_with_frequency():
 
 
 def get_user_answered_questions(user_id):
-    answered_questions = (db.session.query(UserAnswerModel, GeneratedQuestionModel).filter(
-        UserAnswerModel.user_id == user_id).filter(
-        GeneratedQuestionModel.id == UserAnswerModel.generated_question_id)
-        .order_by(GeneratedQuestionModel.created_at.desc())
-        .all())
-
-    return answered_questions
+    return db.session.query(UserAnswerModel, GeneratedQuestionModel) \
+                          .filter(UserAnswerModel.user_id == user_id) \
+                          .filter(GeneratedQuestionModel.id == UserAnswerModel.generated_question_id) \
+                          .order_by(GeneratedQuestionModel.created_at.desc()) \
+                          .all()
 
 
 def generate_first_question():

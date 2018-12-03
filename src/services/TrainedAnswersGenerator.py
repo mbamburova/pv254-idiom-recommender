@@ -3,6 +3,7 @@ from datetime import datetime
 
 import os
 
+from random import shuffle
 from sqlalchemy import or_
 from src.models.IdiomModel import IdiomModel
 from src.models import db
@@ -16,6 +17,7 @@ MY_PATH = os.path.dirname(os.path.abspath(__file__))
 
 matrix_path = os.path.join(MY_PATH, 'final_matrix.pkl')
 sim_matrix = pickle.load(open(matrix_path, 'rb'))
+
 
 def generate_answers(idiom):
     same_categories = get_same_category_idioms(idiom)
@@ -33,7 +35,7 @@ def generate_answers(idiom):
         summed_weights_idioms[i] = w1 + w2 + w3
 
     generated_answer_ids = []
-    while(len(all_idioms) > 0 and len(generated_answer_ids) < 2):
+    while len(all_idioms) > 0 and len(generated_answer_ids) < 2:
         generated_answer_id = max(summed_weights_idioms, key=summed_weights_idioms.get)
         summed_weights_idioms.pop(generated_answer_id)
         if generated_answer_id != idiom.id:
@@ -158,6 +160,7 @@ def get_answer_list(idiom, random_idioms):
     for _idiom in random_idioms:
         answer_list.append({"answer_text": _idiom.definition, "answer_id": _idiom.id})
 
+    shuffle(answer_list)
     return answer_list
 
 
