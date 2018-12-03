@@ -61,6 +61,10 @@ def get_similar_idioms(idiom):
     result_similarities = [s[0] for s in sorted_similarities if s[1] > 0]
 
     sim_count = len(result_similarities)
+    if sim_count == 0:
+        return {}
+    if sim_count == 1:
+        return {result_similarities[0]: MODEL_WEIGHT}
     if sim_count == 2:
         return {result_similarities[0]: 2*(MODEL_WEIGHT / 3.0), result_similarities[1]: MODEL_WEIGHT / 3.0}
 
@@ -113,6 +117,8 @@ def get_incorrectly_answered_idioms(idiom):
                                              if i.GeneratedQuestionModel.answer_one_idiom_id == mistake\
                                              or i.GeneratedQuestionModel.answer_two_idiom_id == mistake\
                                              or i.GeneratedQuestionModel.answer_three_idiom_id == mistake])
+        if questions_with_mistaken_idiom == 0:
+            continue
 
         ratio = float(mistakes_count) / questions_with_mistaken_idiom
         mistakes_with_ratios[mistake] = ratio
@@ -120,6 +126,10 @@ def get_incorrectly_answered_idioms(idiom):
     mistaken_answers = [key for key, val in sorted(mistakes_with_ratios.items(), key=lambda kv: kv[1])]
 
     mist_count = len(mistaken_answers)
+    if mist_count == 0:
+        return {}
+    if mist_count == 1:
+        return {mistaken_answers[0]: MODEL_WEIGHT}
     if mist_count == 2:
         return {mistaken_answers[0]: 2*(MODEL_WEIGHT / 3.0), mistaken_answers[1]: MODEL_WEIGHT / 3.0}
 
