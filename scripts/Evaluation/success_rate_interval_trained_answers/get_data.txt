@@ -1,0 +1,3 @@
+#### copy user_answers joined with users where version is 3 or 4 to local directory to local directory. Selected are id, is_answered_correctly and version
+#### id;is_answered_correctly;version
+#### \copy (SELECT user_answers.id, user_answers.is_answered_correctly, users.version FROM user_answers LEFT OUTER JOIN users ON user_answers.user_id = users.id WHERE users.version >= 3) TO user_answers_trained_answers.csv CSV DELIMITER ';'
